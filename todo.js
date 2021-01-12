@@ -9,9 +9,10 @@ app.get('/usuario', (req, resp)=> {
 });
 
 app.get('/tarefa', (req, resp)=> {
-    resp.send('Rota ativada com GET e recurso usuario')
+    resp.send('Rota ativada com GET e recurso tarefa')
 });
 
 app.listen(port, ()=> {
-    console.log(`[INFO]: usuario rodando na porta http://localhost: ${port}`)
+    console.log(`[INFO]: app rodando na porta http://localhost: ${port}`)
 });
+
