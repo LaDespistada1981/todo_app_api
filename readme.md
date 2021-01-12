@@ -17,7 +17,7 @@ This is an app for management of issues, based on kanban methodology.
 
 ## **Author:**
 
-<img src="./img/img_readme/roberta.jpg" width="100" height="100">
+<img src="./img_readme/roberta.jpg" width="100" height="100">
 
 **Roberta Santos**
 - My Projects - [GitHub](https://github.com/LaDespistada1981)
