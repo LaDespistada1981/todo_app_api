@@ -13,9 +13,7 @@ Keywords: [javascript] [nodejs] [mysql]
 This is an app for management of issues, based on kanban methodology.
 
 
-
-
-## **Author:**
+**Author:**
 
 <img src="./img_readme/roberta.jpg" width="100" height="100">
 
