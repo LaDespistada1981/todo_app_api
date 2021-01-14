@@ -1,13 +1,13 @@
 const express = require('express');
-
-const usuariosController = require('./controllers/usuarios-controller');
-
-const tarefasController = require('./controllers/tarefas-controller');
-
+const app = express();
 const port = 8080;
 
-const app = express();
-
+const usuariosController = require('./controllers/usuarios-controller');
 usuariosController(app);
 
+const tarefasController = require('./controllers/tarefas-controller');
 tarefasController(app);
+
+app.listen(port, ()=>{
+    console.log(`App rodando na porta ${port}`)
+})
