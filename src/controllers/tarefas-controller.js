@@ -5,6 +5,6 @@ module.exports = (app)=> {
 
     app.post(`/tarefas`, (req, resp)=> {
         resp.send('<h2>Rota de tarefas ativada POST: tarefa adicionada ao bd</h2>')
-        })
+    })
 }
 
