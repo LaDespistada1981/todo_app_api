@@ -1,13 +1,19 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+const usuariosController = require('./controllers/usuarios-controller');
+const tarefasController = require('./controllers/tarefas-controller');
+
 const port = 8080;
 
-const usuariosController = require('./controllers/usuarios-controller');
-usuariosController(app);
+const app = express();
 
-const tarefasController = require('./controllers/tarefas-controller');
+app.use(bodyParser.json());
+
+
+usuariosController(app);
 tarefasController(app);
 
+
 app.listen(port, ()=>{
-    console.log(`App rodando na porta ${port}`)
+    console.log(`[INFO]: Servidor rodando em localhost: ${port}`)
 })
