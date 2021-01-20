@@ -1,11 +1,15 @@
-module.exports = (app)=> {
+const Tarefa = require('../models/usuario')
+module.exports = (app, bd)=> {
     app.get('/tarefas', (req, resp)=> {
-    resp.send('<h2>Rota GET de tarefas ativada: rastreamento da aplicação sendo feita com nodemon</h2>')
+    resp.send(bd.tarefas);
     });
 
     app.post('/tarefas', (req, resp)=> {
-        
-        console.log(`Request body issues:${req.body.curso}`)
-        resp.send('<h2>Rota POST ok!</h2>')
+        //utilizar o body da requisição para criar nova tarefa!
+        const trf = new Tarefa(req.body.titulo, req.body.descricao, req.body.status, req.body.dataCriacao);
+        //para guardar as tarefas no array
+        bd.tarefas.push(trf);
+        console.log(trf);
+        resp.send('<h2>Rota POST de tarfa ok!</h2>');
     });
 }

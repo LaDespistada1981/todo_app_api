@@ -1,10 +1,17 @@
-module.exports = (app)=> {
+const Usuario = require('../models/usuario');
+
+module.exports = (app,bd)=> {
     app.get('/usuarios', (req, resp)=> {
-    resp.send('<h2>Rota de usuários ativada GET: Rastreamento da aplicação sendo feita com nodemon</h2>')
+    resp.send(bd.usuarios)
     })
+    
 
     app.post('/usuarios', (req, resp)=> {
-        console.log(`Request body user:${req.body.nome}`)
-        resp.send('<h2>Rota de usuários ativada Post: usuário adicionado ao bd</h2>')
+        //utilizar o body da requisição para criar novo usuário!
+        const usr = new Usuario(req.body.nome, req.body.email, req.body.senha);
+        //para guardar os usuários no array
+        bd.usuarios.push(usr);
+        console.log(bd);
+        resp.send('Usuário cadastrado ok!');
     })
 } 
