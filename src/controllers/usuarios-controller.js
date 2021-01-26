@@ -2,7 +2,11 @@ const Usuario = require('../models/usuario');
 
 module.exports = (app,bd)=> {
     app.get('/usuarios', (req, resp)=> {
-    resp.send(bd.usuarios)
+        bd.all("SELECT * FROM USUARIOS;", (err, rows)=>{
+            if(err) throw new Error('Erro ao consultar tabela');
+            else console.log(linhas);
+        }
+        resp.send(bd.usuarios)
     })
     
 
@@ -12,9 +16,6 @@ module.exports = (app,bd)=> {
         //para guardar os usuários no array
         bd.usuarios.push(usr);
         console.log(bd);
-<<<<<<< Updated upstream
-        resp.send('Usuário cadastrado ok!');
-=======
         resp.send('Usuário cadastrado no banco de dados!');
     });
 
@@ -47,6 +48,6 @@ module.exports = (app,bd)=> {
     
         atualizaRegistro(req.params.email, req.body);
         resp.send("Usuário atualizado!")
->>>>>>> Stashed changes
+
     })
 } 
