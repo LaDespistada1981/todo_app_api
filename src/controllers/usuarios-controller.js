@@ -73,6 +73,5 @@ module.exports = (app, bd)=> {
         bd.usuarios.push(usr);
         console.log(bd);
         resp.send('Usuário cadastrado ok!');
-
     })
 }
