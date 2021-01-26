@@ -13,13 +13,7 @@ module.exports = (app, bd)=> {
             }
         }
         resp.send('Tarefa não encontrada!')
-
-const Tarefa = require('../models/usuario')
-module.exports = (app, bd)=> {
-    app.get('/tarefas', (req, resp)=> {
-    resp.send(bd.tarefas);
-
-    });
+    })
 
     app.get('/tarefas/:dataCriacao', (req, resp)=> {
         for(let trf of bd.tarefas){
@@ -28,7 +22,7 @@ module.exports = (app, bd)=> {
             }
         }
         resp.send('Tarefa não encontrada!')
-    });
+    })
 
 
     app.post('/tarefas', (req, resp)=> {
@@ -39,12 +33,5 @@ module.exports = (app, bd)=> {
         console.log(trf);
 
         resp.send('<h2>Rota POST de tarefa ok!</h2>');
-
-       
-
     });
-
-    // app.delete('/tarefas', (_req, resp)=> {
-    //     resp.send('Recebi uma solicitação de DELETE na rota /tarefas')
-    // });
 }
