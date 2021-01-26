@@ -1,3 +1,4 @@
+
 const Tarefa = require('../models/tarefa');
 
 module.exports = (app, bd)=> {
@@ -12,6 +13,12 @@ module.exports = (app, bd)=> {
             }
         }
         resp.send('Tarefa não encontrada!')
+
+const Tarefa = require('../models/usuario')
+module.exports = (app, bd)=> {
+    app.get('/tarefas', (req, resp)=> {
+    resp.send(bd.tarefas);
+
     });
 
     app.get('/tarefas/:dataCriacao', (req, resp)=> {
@@ -30,7 +37,11 @@ module.exports = (app, bd)=> {
         //para guardar as tarefas no array
         bd.tarefas.push(trf);
         console.log(trf);
+
         resp.send('<h2>Rota POST de tarefa ok!</h2>');
+
+       
+
     });
 
     // app.delete('/tarefas', (_req, resp)=> {

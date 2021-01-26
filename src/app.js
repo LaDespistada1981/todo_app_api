@@ -9,6 +9,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
+// const Usuario = require('./models/usuario')
+// const Tarefa = require('./models/tarefa')
+
 
 usuariosController(app,bd);
 tarefasController(app, bd);
