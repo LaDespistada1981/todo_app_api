@@ -1,10 +1,19 @@
 const Usuario = require('../models/usuario');
-
+const UsuariosDAO = require('../DAO/usuarios-dao');
 
 module.exports = (app, bd)=> {
+
+    const usuariosDAO = new UsuariosDAO(bd)
+
     app.get('/usuarios', (req, resp)=> {
-    resp.send(bd.usuarios)
+
+        usuariosDAO.listaUsuarios()
+
+        .then((usuarios)=> {resp.send(usuarios)})
+
+        .catch((error)=>{resp.send(error)})
     });
+    
 
     app.get('/usuarios/:nome', (req, resp)=> {
         for(let usr of bd.usuarios){
@@ -21,26 +30,17 @@ module.exports = (app, bd)=> {
                 resp.send(usr)
             }
         }
-        resp.send('Usuário não encontrado')
+        resp.send('Usuário não encontrado');
     });
 
 
-module.exports = (app,bd)=> {
-    app.get('/usuarios', (req, resp)=> {
-    resp.send(bd.usuarios)
-    })
-    
-
-
     app.post('/usuarios', (req, resp)=> {
-        //utilizar o body da requisição para criar novo usuário!
-        const usr = new Usuario(req.body.nome, req.body.email, req.body.senha);
 
+        usuariosDAO.insertUsuarios(req.body)
 
-        //para guardar os usuários no array
-        bd.usuarios.push(usr);
-        console.log(bd);
-        resp.send('Usuário cadastrado no banco de dados!');
+        .then((usuarios)=> {resp.send(usuarios)})
+
+        .catch((error)=>{resp.send(error)})
     });
 
 
@@ -77,6 +77,5 @@ module.exports = (app,bd)=> {
         bd.usuarios.push(usr);
         console.log(bd);
         resp.send('Usuário cadastrado ok!');
-
     })
 }

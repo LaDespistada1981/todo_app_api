@@ -1,10 +1,19 @@
-
 const Tarefa = require('../models/tarefa');
+const TarefasDAO = require('../DAO/tarefas-dao');
 
 module.exports = (app, bd)=> {
-    app.get('/tarefas', (req, resp)=> {   
-        resp.send(bd.tarefas);
+
+    const tarefasDAO = new TarefasDAO(bd)
+
+    app.get('/tarefas', (req, resp)=> {  
+        
+        tarefasDAO.listaTarefas()
+
+        .then((tarefas)=> {resp.send(tarefas)})
+
+        .catch((error)=> {resp.send(error)})
     });
+
 
     app.get('/tarefas/:titulo', (req, resp)=> {
         for(let trf of bd.tarefas){
@@ -13,13 +22,7 @@ module.exports = (app, bd)=> {
             }
         }
         resp.send('Tarefa não encontrada!')
-
-const Tarefa = require('../models/usuario')
-module.exports = (app, bd)=> {
-    app.get('/tarefas', (req, resp)=> {
-    resp.send(bd.tarefas);
-
-    });
+    })
 
     app.get('/tarefas/:dataCriacao', (req, resp)=> {
         for(let trf of bd.tarefas){
@@ -28,23 +31,15 @@ module.exports = (app, bd)=> {
             }
         }
         resp.send('Tarefa não encontrada!')
-    });
+    })
 
 
     app.post('/tarefas', (req, resp)=> {
-        //utilizar o body da requisição para criar nova tarefa!
-        const trf = new Tarefa(req.body.titulo, req.body.descricao, req.body.status, req.body.dataCriacao);
-        //para guardar as tarefas no array
-        bd.tarefas.push(trf);
-        console.log(trf);
+        
+        tarefasDAO.insertTarefas(req.body)
 
-        resp.send('<h2>Rota POST de tarefa ok!</h2>');
+        .then((tarefas)=> {resp.send(tarefas)})
 
-       
-
+        .catch((error)=> {resp.send(error)})
     });
-
-    // app.delete('/tarefas', (_req, resp)=> {
-    //     resp.send('Recebi uma solicitação de DELETE na rota /tarefas')
-    // });
 }
