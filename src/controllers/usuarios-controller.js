@@ -1,5 +1,5 @@
 const Usuario = require('../models/usuario');
-
+const UsuariosDAO = require('../DAO/usuarios-dao');
 
 module.exports = (app, bd)=> {
 
@@ -7,7 +7,11 @@ module.exports = (app, bd)=> {
 
     app.get('/usuarios', (req, resp)=> {
 
+        usuariosDAO.listaUsuarios()
 
+        .then((usuarios)=> {resp.send(usuarios)})
+
+        .catch((error)=>{resp.send(error)})
     });
     
 
@@ -32,7 +36,11 @@ module.exports = (app, bd)=> {
 
     app.post('/usuarios', (req, resp)=> {
 
+        usuariosDAO.insertUsuarios(req.body)
 
+        .then((usuarios)=> {resp.send(usuarios)})
+
+        .catch((error)=>{resp.send(error)})
     });
 
 
@@ -71,3 +79,5 @@ module.exports = (app, bd)=> {
         resp.send('Usuário cadastrado ok!');
     })
 }
+
+// atualizar github em 28-01-2021
