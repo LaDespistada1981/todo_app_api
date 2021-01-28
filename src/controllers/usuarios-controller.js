@@ -1,14 +1,19 @@
 const Usuario = require('../models/usuario');
+const UsuariosDAO = require('../DAO/usuarios-dao');
 
 module.exports = (app, bd)=> {
+
+    const usuariosDAO = new UsuariosDAO(bd)
+
     app.get('/usuarios', (req, resp)=> {
 
-        bd.all("SELECT * FROM USUARIOS;", (error, linhas)=> 
-        {
-            if(error) throw new Error('Erro ao consultar tabela');
-            else resp.send(linhas);
-        });
+        usuariosDAO.listaUsuarios()
+
+        .then((usuarios)=> {resp.send(usuarios)})
+
+        .catch((error)=>{resp.send(error)})
     });
+    
 
     app.get('/usuarios/:nome', (req, resp)=> {
         for(let usr of bd.usuarios){
@@ -27,16 +32,15 @@ module.exports = (app, bd)=> {
         }
         resp.send('Usuário não encontrado');
     });
-    
+
 
     app.post('/usuarios', (req, resp)=> {
-        //utilizar o body da requisição para criar novo usuário!
-        const usr = new Usuario(req.body.nome, req.body.email, req.body.senha);
 
-        //para guardar os usuários no array
-        bd.usuarios.push(usr);
-        console.log(bd);
-        resp.send('Usuário cadastrado no banco de dados!');
+        usuariosDAO.insertUsuarios(req.body)
+
+        .then((usuarios)=> {resp.send(usuarios)})
+
+        .catch((error)=>{resp.send(error)})
     });
 
 
