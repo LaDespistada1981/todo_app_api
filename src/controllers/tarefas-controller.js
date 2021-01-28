@@ -35,11 +35,6 @@ module.exports = (app, bd)=> {
 
 
     app.post('/tarefas', (req, resp)=> {
-        
-        tarefasDAO.insertTarefas(req.body)
 
-        .then((tarefas)=> {resp.send(tarefas)})
-
-        .catch((error)=> {resp.send(error)})
     });
 }
