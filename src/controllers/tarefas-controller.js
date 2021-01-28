@@ -1,4 +1,4 @@
-const Tarefa = require('../models/tarefa');
+cconst Tarefa = require('../models/tarefa');
 const TarefasDAO = require('../DAO/tarefas-dao');
 
 module.exports = (app, bd)=> {
@@ -35,6 +35,13 @@ module.exports = (app, bd)=> {
 
 
     app.post('/tarefas', (req, resp)=> {
+        
+        tarefasDAO.insertTarefas(req.body)
 
+        .then((tarefas)=> {resp.send(tarefas)})
+
+        .catch((error)=> {resp.send(error)})
     });
 }
+
+// atualizar github em 28-01-2021
