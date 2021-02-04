@@ -1,4 +1,4 @@
-cconst Tarefa = require('../models/tarefa');
+const Tarefa = require('../models/tarefa');
 const TarefasDAO = require('../DAO/tarefas-dao');
 
 module.exports = (app, bd)=> {
@@ -43,5 +43,3 @@ module.exports = (app, bd)=> {
         .catch((error)=> {resp.send(error)})
     });
 }
-
-// atualizar github em 28-01-2021
