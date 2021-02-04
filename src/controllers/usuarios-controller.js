@@ -6,12 +6,17 @@ module.exports = (app, bd)=> {
     const usuariosDAO = new UsuariosDAO(bd)
 
     app.get('/usuarios', (req, resp)=> {
+        
+        async function listaUsr() {
+        try {
+            const listaUsuariosRetorno =  await usuariosDAO.listaUsuarios()
+            resp.send(listaUsuariosRetorno)
+        }
+        catch {
+            resp.send(error)
+        }}
 
-        usuariosDAO.listaUsuarios()
-
-        .then((usuarios)=> {resp.send(usuarios)})
-
-        .catch((error)=>{resp.send(error)})
+        listaUsr()
     });
     
 
@@ -24,6 +29,8 @@ module.exports = (app, bd)=> {
         resp.send('Usuário não encontrado!')
     });
 
+
+
     app.get('/usuarios/:email', (req, resp)=> {
         for(let usr of bd.usuarios){
             if(usr.email == req.params.email){
@@ -35,47 +42,46 @@ module.exports = (app, bd)=> {
 
 
     app.post('/usuarios', (req, resp)=> {
+        
+        async function insertUsr() {
+        try {
+            const listaUsuariosRetorno =  await usuariosDAO.insertUsuarios(req.body)
+            resp.send(listaUsuariosRetorno)
+        }
+        catch {
+            resp.send(error)
+        }}
 
-        usuariosDAO.insertUsuarios(req.body)
-
-        .then((usuarios)=> {resp.send(usuarios)})
-
-        .catch((error)=>{resp.send(error)})
+        insertUsr()
     });
 
 
-    app.delete('/usuarios/:email', (req, resp)=>{
-        //deleção de elemento no bd
-        let usrNaoDelet = [];
-        for(let i =0; i< bd.usuarios.length; i++){
-            if(bd.usuarios[i].email !== req.params.email){
-                usrNaoDelet.push(bd.usuarios[i])
-            }
-        }
+    app.put('/usuarios/:id', (req, resp)=>{
 
-        bd.usuarios = usrNDelet;
-        console.log(bd.usuarios)
-        resp.send(`Rota delete ativada! - Implementação pendente`)
+        async function updateUsr() {
+        try {
+            let atualizaUsuarioRetorno =  await usuariosDAO.updateRegistroUsuarios(req.params.id, req.body)
+            resp.send(atualizaUsuarioRetorno)
+        }
+        catch {
+            resp.send('erro')
+        }}
+
+        updateUsr()
     });
 
-    //função criada para ser implementada na rota Put
-    const atualizaRegistro =(email,body)=>{
-        for(let usr of bd.usuarios){
-            if(usr.email === email){
-                usr.nome = body.nome;
-                usr.senha = body.senha;
+
+    app.delete('/usuarios/:id', (req,resp)=>{
+        
+        async function deleteUsr() {
+            try {
+                let delecaoUsuarioRetorno = await usuariosDAO.deleteRegistroUsuarios(req.params.id)
+                resp.send(delecaoUsuarioRetorno)
+            } catch {
+                resp.send(error)
             }
         }
-    }
 
-    app.put('/usuarios/:email', (req, resp)=>{
-    
-        atualizaRegistro(req.params.email, req.body);
-        resp.send("Usuário atualizado!")
-
-        //para guardar os usuários no array
-        bd.usuarios.push(usr);
-        console.log(bd);
-        resp.send('Usuário cadastrado ok!');
-    })
+        deleteUsr()
+    });
 }
