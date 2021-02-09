@@ -85,6 +85,4 @@ For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981
 - Meus projetos | My projects - [GitHub](https://github.com/LaDespistada1981)
 - Meus trabalhos | My Jobs - [LinkedIn](https://www.linkedin.com/in/santosroberta)
 - Minha vida | My life - [Instagram](https://www.instagram.com/ladespistada/)
-
-
 <br>
