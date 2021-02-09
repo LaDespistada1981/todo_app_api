@@ -41,7 +41,7 @@ These instructions will allow you running this application on your local machine
     The app will install all necessary dependencies so you can use the api in your computer.
 
  * Start the application in your terminal using: npm start.
-
+<br>
 
 ## 📦 Desenvolvimento | Developement
 
@@ -65,7 +65,7 @@ Utilizamos [GitHub](https://github.com/) para controle de versão. Para as vers�
 #####  English 
 We use [GitHub](https://github.com/) for version control.
 For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981/todo_app_api).
-<br>
+<br><br>
 
 ## 🟢 Rotas de Acesso | Routes
 
@@ -75,7 +75,7 @@ For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981
 
 ### ➡️ Rota de Tarefas | Tasks Routes
     http://localhost:8080/tarefas
-
+<br>
 
 ## ✒️ Autora | Author
 
