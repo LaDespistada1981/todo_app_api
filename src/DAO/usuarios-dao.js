@@ -34,6 +34,7 @@ module.exports = class UsuariosDAO {
     
     updateRegistroUsuarios(id, body){
         return new Promise((resolve, reject)=>{
+
             this._bd.run("UPDATE USUARIOS SET NOME=?, EMAIL=?, SENHA=? WHERE ID=?;",
             [body.NOME, body.EMAIL, body.SENHA, id],
             (error)=>
@@ -55,8 +56,7 @@ module.exports = class UsuariosDAO {
                 if(error) {reject(`Erro ao tentar deletar o registro ${error}`)} 
 
                 else {resolve(`Registro de usuário deletado com sucesso!`)}
-            }
-            )
+            })
         })
     }
 }

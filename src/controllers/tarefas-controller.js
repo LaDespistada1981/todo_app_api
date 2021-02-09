@@ -1,9 +1,9 @@
-const Tarefa = require('../models/tarefa');
 const TarefasDAO = require('../DAO/tarefas-dao');
 
 module.exports = (app, bd)=> {
 
     const tarefasDAO = new TarefasDAO(bd)
+
 
     app.get('/tarefas', (req, resp)=> {  
         
@@ -41,5 +41,27 @@ module.exports = (app, bd)=> {
         .then((tarefas)=> {resp.send(tarefas)})
 
         .catch((error)=> {resp.send(error)})
+    });
+
+
+    app.put('/tarefas/:id', async(req, resp)=>{
+
+        try {
+            let atualizaTarefaRetorno =  await tarefasDAO.updateTarefa(req.params.id, req.body)
+            resp.send(atualizaTarefaRetorno)
+        }
+        catch {
+            resp.send('Erro ao atualizar tarefa.')
+        }
+    });
+
+
+    app.delete('/tarefas/:id', async(req, resp)=>{
+
+        try {
+            resp.send(await tarefasDAO.deleteTarefa(req.params.id))
+        } catch {
+            resp.send(error)
+        }
     });
 }
