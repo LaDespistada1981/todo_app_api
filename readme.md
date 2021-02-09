@@ -7,8 +7,8 @@ A **TODO-APP-API** é uma api para gerenciamento de tarefas baseada na metodolog
 Esta API foi desenvolvida ao longo do 3º módulo do curso de desenvolvimento web Full-Stack do bootcamp **Resilia** **Educação**.
 <br>
 
-#####  English 
-This is an api for management of tasks, based on kanban methodology. 
+#####  English
+This is an api for management of tasks, based on kanban methodology.
 <br>
 
 #### 🔑 Keywords: [javascript] [nodejs] [sqlite]
