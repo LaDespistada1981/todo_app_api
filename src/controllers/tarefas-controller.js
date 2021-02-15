@@ -5,7 +5,13 @@ module.exports = (app, bd)=> {
     const tarefasDAO = new TarefasDAO(bd)
 
 
-    app.get('/tarefas', (req, resp)=> {  
+    app.get('/tarefas', async(req, resp)=> {  
+
+        try {
+            const listaTrfRet = await tarefasDAO.listaTarefaPorUserId()
+        } catch {
+            
+        }
         
         tarefasDAO.listaTarefas()
 
@@ -14,24 +20,15 @@ module.exports = (app, bd)=> {
         .catch((error)=> {resp.send(error)})
     });
 
-
-    app.get('/tarefas/:titulo', (req, resp)=> {
-        for(let trf of bd.tarefas){
-            if(trf.titulo == req.params.titulo){
-                resp.send(trf)
-            }
+    app.get('/tarefas/:id_usuario', async(req, resp)=> {
+        
+        try {
+            const buscarTrfPorIdUsrRet = await tarefasDAO.buscarTarefasPorIdUsuario(req.params.id_usuario)
+            resp.send(buscarTrfPorIdUsrRet)
+        } catch {
+            resp.send(`Tarefas de usuário não encontradas.`)
         }
-        resp.send('Tarefa não encontrada!')
-    })
-
-    app.get('/tarefas/:dataCriacao', (req, resp)=> {
-        for(let trf of bd.tarefas){
-            if(trf.dataCriacao == req.params.dataCriacao){
-                resp.send(trf)
-            }
-        }
-        resp.send('Tarefa não encontrada!')
-    })
+    });
 
 
     app.post('/tarefas', (req, resp)=> {

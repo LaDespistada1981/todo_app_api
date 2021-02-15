@@ -8,38 +8,30 @@ module.exports = (app, bd)=> {
     app.get('/usuarios', async(req, resp)=> {
         
         try {
-            const listaUsuariosRetorno =  await usuariosDAO.listaUsuarios()
-            resp.send(listaUsuariosRetorno)
+            const listaUsrRet =  await usuariosDAO.listaUsr()
+            resp.send(listaUsrRet)
         }
         catch {
             resp.send(error)
         }
     });
 
-    app.get('/usuarios/:nome', (req, resp)=> {
-        for(let usr of bd.usuarios){
-            if(usr.nome == req.params.nome){
-                resp.send(usr)
-            }
-        }
-        resp.send('Usuário não encontrado!')
-    });
+    app.get('/usuarios/:email', async(req, resp)=> {
 
-    app.get('/usuarios/:email', (req, resp)=> {
-        for(let usr of bd.usuarios){
-            if(usr.email == req.params.email){
-                resp.send(usr)
-            }
+        try {
+            const buscarUsrPorEmailRet = await usuariosDAO.buscarUsrPorEmail(req.params.email)
+            resp.send(buscarUsrPorEmailRet)
+        } catch {
+            resp.send(error)
         }
-        resp.send('Usuário não encontrado');
     });
 
 
     app.post('/usuarios', async(req, resp)=> {
         
         try {
-            const listaUsuariosRetorno =  await usuariosDAO.insertUsuarios(req.body)
-            resp.send(listaUsuariosRetorno)
+            const insereUsrRet =  await usuariosDAO.insertUsr(req.body)
+            resp.send(insereUsrRet)
         }
         catch {
             resp.send(error)
@@ -50,8 +42,8 @@ module.exports = (app, bd)=> {
     app.put('/usuarios/:id', async(req, resp)=>{
 
         try {
-            let atualizaUsuarioRetorno =  await usuariosDAO.updateRegistroUsuarios(req.params.id, req.body)
-            resp.send(atualizaUsuarioRetorno)
+            let atualizaUsrRet =  await usuariosDAO.updateRegUsr(req.params.id, req.body)
+            resp.send(atualizaUsrRet)
         }
         catch {
             resp.send('erro')
@@ -62,8 +54,8 @@ module.exports = (app, bd)=> {
     app.delete('/usuarios/:id', async(req,resp)=>{
         
         try {
-            let delecaoUsuarioRetorno = await usuariosDAO.deleteRegistroUsuarios(req.params.id)
-            resp.send(delecaoUsuarioRetorno)
+            let delecaoUsrRet = await usuariosDAO.deleteRegUsr(req.params.id)
+            resp.send(delecaoUsrRet)
         } catch {
             resp.send(error)
         }
