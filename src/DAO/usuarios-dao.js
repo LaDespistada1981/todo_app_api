@@ -4,7 +4,7 @@ module.exports = class UsuariosDAO {
         this._bd = bd;
     }
 
-    listaUsuarios() {
+    listaUsr() {
         return new Promise((resolve, reject)=> {
 
             this._bd.all("SELECT * FROM USUARIOS;", (error, linhas)=> 
@@ -16,8 +16,21 @@ module.exports = class UsuariosDAO {
         })
     }
 
+    
+    buscarUsrPorEmail(email){
+        return new Promise((resolve, reject)=> {
 
-    insertUsuarios(body) {
+            this._bd.get("SELECT * FROM USUARIOS WHERE EMAIL = ?", [email], (error, linha)=>
+            {
+                if (error) reject(`Email não encontrado`)
+
+                else resolve (linha);
+            })
+        })
+    }
+
+
+    insertUsr(body) {
         return new Promise((resolve, reject)=> {
 
             this._bd.run("INSERT INTO USUARIOS (NOME, EMAIL, SENHA) VALUES(?,?,?)",
@@ -32,7 +45,7 @@ module.exports = class UsuariosDAO {
     }
 
     
-    updateRegistroUsuarios(id, body){
+    updateRegUsr(id, body){
         return new Promise((resolve, reject)=>{
 
             this._bd.run("UPDATE USUARIOS SET NOME=?, EMAIL=?, SENHA=? WHERE ID=?;",
@@ -47,7 +60,7 @@ module.exports = class UsuariosDAO {
     }
     
 
-    deleteRegistroUsuarios(id){
+    deleteRegUsr(id){
         return new Promise((resolve, reject)=>{
             this._bd.run("DELETE FROM USUARIOS WHERE ID=?",
             [id],

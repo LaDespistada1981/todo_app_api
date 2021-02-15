@@ -4,6 +4,7 @@ module.exports = class TarefasDAO {
         this._bd = bd;
     }
 
+
     listaTarefas() {
         return new Promise((resolve, reject)=> {
 
@@ -12,6 +13,18 @@ module.exports = class TarefasDAO {
                 if(error) reject(`Erro ao consultar: ${error}`);
 
                 else resolve(linhas);
+            })
+        })
+    }
+
+    listaTarefaPorUserId(id_usuario) {
+        return new Promise((resolve, reject)=> {
+            
+            this._bd.get("SELECT * FROM TAREFAS WHERE ID_USUARIO = ?", [id_usuario], (error, linha)=>
+            {
+                if(error) reject (`Erro ao consultar tarefas do usuário`)
+
+                else resolve (linha);
             })
         })
     }
@@ -46,6 +59,7 @@ module.exports = class TarefasDAO {
         })
     }
 
+    
     deleteTarefa(id){
         return new Promise((resolve, reject)=>{
             this._bd.run("DELETE FROM USUARIOS WHERE ID=?",
