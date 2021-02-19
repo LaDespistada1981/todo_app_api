@@ -4,8 +4,7 @@ module.exports = class TarefasDAO {
         this._bd = bd;
     }
 
-
-    listaTarefas() {
+    listaTrf() {
         return new Promise((resolve, reject)=> {
 
             this._bd.all("SELECT * FROM TAREFAS;", (error, linhas)=> 
@@ -17,20 +16,20 @@ module.exports = class TarefasDAO {
         })
     }
 
-    listaTarefaPorUserId(id_usuario) {
+    buscarTrfPorUsrId(id_usuario) {
         return new Promise((resolve, reject)=> {
             
-            this._bd.get("SELECT * FROM TAREFAS WHERE ID_USUARIO = ?", [id_usuario], (error, linha)=>
+            this._bd.all("SELECT * FROM TAREFAS WHERE ID_USUARIO = ?", [id_usuario], (error, linhas)=>
             {
                 if(error) reject (`Erro ao consultar tarefas do usuário`)
 
-                else resolve (linha);
+                else resolve (linhas);
             })
         })
     }
 
 
-    insertTarefas(body) {
+    insertTrf(body) {
         return new Promise((resolve, reject)=> {
 
             this._bd.run("INSERT INTO TAREFAS (TITULO, DESCRICAO, STATUS, DATACRIACAO, ID_USUARIO) VALUES(?,?,?,?,?)",
@@ -45,7 +44,7 @@ module.exports = class TarefasDAO {
     }
 
 
-    updateTarefa(id, body){
+    updateTrf(id, body){
         return new Promise((resolve, reject)=>{
             
             this._bd.run("UPDATE TAREFAS SET TITULO=?, DESCRICAO=?, STATUS=?, DATACRIACAO=? WHERE ID=?;",
@@ -60,15 +59,15 @@ module.exports = class TarefasDAO {
     }
 
     
-    deleteTarefa(id){
+    deleteTrf(id){
         return new Promise((resolve, reject)=>{
             this._bd.run("DELETE FROM USUARIOS WHERE ID=?",
             [id],
             (error)=>
             {
-                if(error) {reject(`Erro ao tentar deletar o registro ${id}`)} 
+                if(error) {reject(`Erro ao tentar deletar o registro`)} 
 
-                else {resolve(`Tarefa deletada com sucesso!`)}
+                else {resolve(`Tarefa ${id} deletada com sucesso!`)}
             })
         })
     }

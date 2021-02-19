@@ -8,44 +8,40 @@ module.exports = (app, bd)=> {
     app.get('/tarefas', async(req, resp)=> {  
 
         try {
-            const listaTrfRet = await tarefasDAO.listaTarefaPorUserId()
+            const listaTrfRet = await tarefasDAO.listaTrf()
+            resp.status(200).send(listaTrfRet)
         } catch {
-            
+            resp.send(error)
         }
-        
-        tarefasDAO.listaTarefas()
-
-        .then((tarefas)=> {resp.send(tarefas)})
-
-        .catch((error)=> {resp.send(error)})
     });
 
     app.get('/tarefas/:id_usuario', async(req, resp)=> {
         
         try {
-            const buscarTrfPorIdUsrRet = await tarefasDAO.buscarTarefasPorIdUsuario(req.params.id_usuario)
-            resp.send(buscarTrfPorIdUsrRet)
+            const buscarTrfPorIdUsrRet = await tarefasDAO.buscarTrfPorUsrId(req.params.id_usuario)
+            resp.status(200).send(buscarTrfPorIdUsrRet)
         } catch {
             resp.send(`Tarefas de usuário não encontradas.`)
         }
     });
 
 
-    app.post('/tarefas', (req, resp)=> {
+    app.post('/tarefas', async(req, resp)=> {
         
-        tarefasDAO.insertTarefas(req.body)
-
-        .then((tarefas)=> {resp.send(tarefas)})
-
-        .catch((error)=> {resp.send(error)})
+        try {
+            const insereTrfRet = await tarefasDAO.insertTrf(req.body)
+            resp.status(200).send(insereTrfRet)
+        } catch {
+            resp.send(error)
+        }
     });
 
 
     app.put('/tarefas/:id', async(req, resp)=>{
 
         try {
-            let atualizaTarefaRetorno =  await tarefasDAO.updateTarefa(req.params.id, req.body)
-            resp.send(atualizaTarefaRetorno)
+            let atualizaTrfRet =  await tarefasDAO.updateTrf(req.params.id, req.body)
+            resp.status(200).send(atualizaTrfRet)
         }
         catch {
             resp.send('Erro ao atualizar tarefa.')
@@ -56,7 +52,8 @@ module.exports = (app, bd)=> {
     app.delete('/tarefas/:id', async(req, resp)=>{
 
         try {
-            resp.send(await tarefasDAO.deleteTarefa(req.params.id))
+            let deleteTrfRet = await tarefasDAO.deleteTrf(req.params.id)
+            resp.status(200).send(deleteTrfRet)
         } catch {
             resp.send(error)
         }
