@@ -74,14 +74,14 @@ For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981
     http://localhost:8080/usuarios/email - Rota GET de busca de usuário por email
     http://localhost:8080/usuarios - Rota POST para inserir usuários no banco de dados
     http://localhost:8080/usuarios/id_usuario - Rota PUT - Altera ficha de usuários
-    http://localhost:8080/usuarios/id_usuario - Rota DELELTE - Apaga um registro de usuários
+    http://localhost:8080/usuarios/id_usuario - Rota DELETE - Apaga um registro de usuários
 
 ### ➡️ Rota de Tarefas | Tasks Routes
     http://localhost:8080/tarefas/- Rota GET para tarefas
     http://localhost:8080/tarefas/id_usuario - Rota GET de busca de tarefas por id_usuario
     http://localhost:8080/tarefas - Rota POST para inserir tarefas no banco de dados
     http://localhost:8080/tarefas/id - Rota PUT - Altera registro na tabelas de tarefas
-    http://localhost:8080/tarefas/id - Rota DELELTE - Apaga um registro na tabela de tarefas
+    http://localhost:8080/tarefas/id - Rota DELETE - Apaga um registro na tabela de tarefas
 <br>
 
 ## ✒️ Autora | Author
