@@ -16,7 +16,7 @@ module.exports = class UsuariosDAO {
         })
     }
 
-    
+
     buscarUsrPorEmail(email){
         return new Promise((resolve, reject)=> {
 
@@ -66,7 +66,7 @@ module.exports = class UsuariosDAO {
             [id],
             (error)=>
             {
-                if(error) {reject(`Erro ao tentar deletar o registro ${error}`)} 
+                if(error) {reject(`Erro ao tentar deletar o registro`)}
 
                 else {resolve(`Registro de usuário deletado com sucesso!`)}
             })

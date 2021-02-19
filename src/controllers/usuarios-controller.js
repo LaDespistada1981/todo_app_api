@@ -9,7 +9,7 @@ module.exports = (app, bd)=> {
         
         try {
             const listaUsrRet =  await usuariosDAO.listaUsr()
-            resp.send(listaUsrRet)
+            resp.status(200).send(listaUsrRet)
         }
         catch {
             resp.send(error)
@@ -20,7 +20,7 @@ module.exports = (app, bd)=> {
 
         try {
             const buscarUsrPorEmailRet = await usuariosDAO.buscarUsrPorEmail(req.params.email)
-            resp.send(buscarUsrPorEmailRet)
+            resp.status(200).send(buscarUsrPorEmailRet)
         } catch {
             resp.send(error)
         }
@@ -31,7 +31,7 @@ module.exports = (app, bd)=> {
         
         try {
             const insereUsrRet =  await usuariosDAO.insertUsr(req.body)
-            resp.send(insereUsrRet)
+            resp.status(200).send(insereUsrRet)
         }
         catch {
             resp.send(error)
@@ -43,7 +43,7 @@ module.exports = (app, bd)=> {
 
         try {
             let atualizaUsrRet =  await usuariosDAO.updateRegUsr(req.params.id, req.body)
-            resp.send(atualizaUsrRet)
+            resp.status(200).send(atualizaUsrRet)
         }
         catch {
             resp.send('erro')
@@ -55,7 +55,7 @@ module.exports = (app, bd)=> {
         
         try {
             let delecaoUsrRet = await usuariosDAO.deleteRegUsr(req.params.id)
-            resp.send(delecaoUsrRet)
+            resp.status(200).send(delecaoUsrRet)
         } catch {
             resp.send(error)
         }
