@@ -21,3 +21,4 @@ app.listen(port, ()=>{
     console.log(`[INFO]: Servidor rodando em localhost: ${port}`)
 })
 
+module.exports = app;

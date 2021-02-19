@@ -1,13 +1,45 @@
-const request = require('supertest')
+const request = require('supertest');
 
-const usrController = require('../controllers/usuarios-controller')
+//Testando Rotas de Usuarios
+//Testando Rota GET 
+test('Rota GET /usuarios', async ()=>
+{
+    const response = await request('http://localhost:8080')
+    .get('/usuarios')
+    .expect(200)
+})
 
-describe('Teste de Rotas de Usuário', ()=> {
-    it('should get users route', async ()=> {
-        const resposta = await request(usrController).app.get('/usuarios')
+//Testando Rota GET com parâmetro
+test('Rota GET com parâmetro /usuarios/:email', async ()=>
+{
+    const response = await request('http://localhost:8080')
+    .get('/usuarios/:email')
+    .expect(200)
+})
 
-        expect(resposta.statusCode).toEqual(200)
-        expect(resposta.body).toHavePropert(`${listaUsrRet}`)
-    })
 
+//Testando Rota POST
+test('Rota POST /usuarios', async ()=>
+{
+    const response = await request('http://localhost:8080')
+    .post('/usuarios')
+    .expect(200)
+})
+
+
+//Testando Rota PUT
+test('Rota PUT /usuarios/:id', async ()=>
+{
+    const response = await request('http://localhost:8080')
+    .put('/usuarios/:id')
+    .expect(200)
+})
+
+
+//Testando Rota DELETE
+test('Rota DELETE /usuarios/:id', async ()=>
+{
+    const response = await request('http://localhost:8080')
+    .delete('/usuarios/:id')
+    .expect(200)
 })
