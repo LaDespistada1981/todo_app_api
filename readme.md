@@ -14,7 +14,7 @@ This is an api for management of tasks, based on kanban methodology.
 #### 🔑 Keywords: [javascript] [nodejs] [sqlite]
 <br>
 
-## 🚀 Começando | Starting
+##  🚀 Começando | Starting
 
 Essas instruções permitirão que você consiga ter esse projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 <br>
@@ -43,7 +43,7 @@ These instructions will allow you running this application on your local machine
  * Start the application in your terminal using: npm start.
 <br>
 
-## 📦 Desenvolvimento | Developement
+##  📦 Desenvolvimento | Developement
 
 ### 🛠️ Ambiente de construção | Building enviroment
 
@@ -57,7 +57,7 @@ These instructions will allow you running this application on your local machine
 <br>
 
 
-## 📌 Versão | Version Control
+##  📌 Versão | Version Control
 
 Utilizamos [GitHub](https://github.com/) para controle de versão. Para as versões disponíveis, procure em [TODO-APP-API](https://github.com/LaDespistada1981/todo_app_api).
 <br>
@@ -67,7 +67,9 @@ We use [GitHub](https://github.com/) for version control.
 For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981/todo_app_api).
 <br><br>
 
-## 🟢 Rotas de Acesso | Routes
+##  🟢 Rotas de Acesso | Routes
+
+### ➡️ As rotas para teste podem ser encontradas em => TODO_APP_API/src/insomnia/insomnia.json
 
 ### ➡️ Rota de Usuarios | User Routes
     http://localhost:8080/usuarios - Rota GET para listar usuários
@@ -84,7 +86,7 @@ For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981
     http://localhost:8080/tarefas/:id - Rota DELETE - Apaga um registro na tabela de tarefas
 <br>
 
-## ✒️ Autora | Author
+##  ✒️ Autora | Author
 
 <img src="./img_readme/roberta.jpg" width="100" height="100">
 
