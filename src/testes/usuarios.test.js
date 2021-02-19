@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 //Testando Rotas de Usuarios
-//Testando Rota GET 
+//Testando Rota GET
 test('Rota GET /usuarios', async ()=>
 {
     const response = await request('http://localhost:8080')
