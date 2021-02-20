@@ -5,7 +5,7 @@
   "main": "todo.js",
   "scripts": {
     "test": "jest",
-    "start": "node app.js"
+    "start": "node ../src/app.js"
   },
   "repository": {
     "type": "git",
