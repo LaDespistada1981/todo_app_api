@@ -59,5 +59,5 @@ module.exports = (app, bd)=> {
         } catch {
             resp.send(error)
         }
-    });
+    })
 }

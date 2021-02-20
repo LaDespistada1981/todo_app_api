@@ -4,7 +4,7 @@ const usuariosController = require('./controllers/usuarios-controller');
 const tarefasController = require('./controllers/tarefas-controller');
 const bd = require('./infra/sqlite-db');
 const cors = require('cors');
-const port = 8080;
+const port = 5000;
 
 const app = express();
 
