@@ -72,18 +72,18 @@ For available versions, check [TODO-APP-API](https://github.com/LaDespistada1981
 ### ➡️ As rotas para teste podem ser encontradas em => TODO_APP_API/src/insomnia/insomnia.json
 
 ### ➡️ Rota de Usuarios | User Routes
-    http://localhost:8080/usuarios - Rota GET para listar usuários
-    http://localhost:8080/usuarios/:email - Rota GET de busca de usuário por email
-    http://localhost:8080/usuarios - Rota POST para inserir usuários no banco de dados
-    http://localhost:8080/usuarios/:id - Rota PUT - Altera ficha de usuário na tabela de usuários
-    http://localhost:8080/usuarios/:id - Rota DELETE - Apaga um registro na tabela de usuários
+    http://localhost:5000/usuarios - Rota GET para listar usuários
+    http://localhost:5000/usuarios/:email - Rota GET de busca de usuário por email
+    http://localhost:5000/usuarios - Rota POST para inserir usuários no banco de dados
+    http://localhost:5000/usuarios/:id - Rota PUT - Altera ficha de usuário na tabela de usuários
+    http://localhost:5000/usuarios/:id - Rota DELETE - Apaga um registro na tabela de usuários
 
 ### ➡️ Rota de Tarefas | Tasks Routes
-    http://localhost:8080/tarefas/- Rota GET para listar tarefas de usuários
-    http://localhost:8080/tarefas/:id_usuario - Rota GET de busca de tarefas por id_usuario
-    http://localhost:8080/tarefas - Rota POST para inserir tarefas no banco de dados
-    http://localhost:8080/tarefas/:id - Rota PUT - Altera registro na tabelas de tarefas
-    http://localhost:8080/tarefas/:id - Rota DELETE - Apaga um registro na tabela de tarefas
+    http://localhost:5000/tarefas/- Rota GET para listar tarefas de usuários
+    http://localhost:5000/tarefas/:id_usuario - Rota GET de busca de tarefas por id_usuario
+    http://localhost:5000/tarefas - Rota POST para inserir tarefas no banco de dados
+    http://localhost:5000/tarefas/:id - Rota PUT - Altera registro na tabelas de tarefas
+    http://localhost:5000/tarefas/:id - Rota DELETE - Apaga um registro na tabela de tarefas
 <br>
 
 ##  ✒️ Autora | Author
